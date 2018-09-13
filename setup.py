@@ -26,7 +26,7 @@ ext_modules = [
         'python_example',
         ['./src/main.cpp'],
         include_dirs=[
-	    './src',
+            './src',
             # Path to pybind11 headers
             get_pybind_include(),
             get_pybind_include(user=True)
