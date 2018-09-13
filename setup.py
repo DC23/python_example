@@ -24,8 +24,9 @@ class get_pybind_include(object):
 ext_modules = [
     Extension(
         'python_example',
-        ['src/main.cpp'],
+        ['./src/main.cpp'],
         include_dirs=[
+	    './src',
             # Path to pybind11 headers
             get_pybind_include(),
             get_pybind_include(user=True)
@@ -68,8 +69,21 @@ def cpp_flag(compiler):
 class BuildExt(build_ext):
     """A custom build extension for adding compiler-specific options."""
     c_opts = {
-        'msvc': ['/EHsc'],
-        'unix': [],
+        'msvc': [
+            '/EHsc',
+            '/W3',
+            '/GL',
+            '/Od',
+            '/Oi',
+            '/Gy',
+            '/Zi',
+            '-DWINDOWS',
+            ],
+        'unix': [
+            '-O3',
+            '-DNDEBUG',
+            '-DUNIX',
+            ],
     }
 
     if sys.platform == 'darwin':
