@@ -7,3 +7,5 @@ _build
 _generate
 build
 dist/
+.pytest_cache/
+tmp/

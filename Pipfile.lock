@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e73f0859adb689f83b51e2797725616c5732b7408be15fb441437974d56aaaee"
+            "sha256": "0a00c4f9533fa565d5c973655ab32d3e714a326c8cccf270ebe7e485b18af59d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,6 +16,10 @@
         ]
     },
     "default": {
+        "e1839a8": {
+            "editable": true,
+            "path": "."
+        },
         "pybind11": {
             "hashes": [
                 "sha256:642abbbd2948ed5af28e69adfae1535347c7aa9eb0cdab130e20e1f198f8e1cf",
