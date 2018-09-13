@@ -3,6 +3,9 @@ python_example
 
 An example project built with [pybind11](https://github.com/pybind/pybind11).
 
+DC: I am extending this with additional examples to explore specific data types
+that I need to manage in another project.
+
 Installation
 ------------
 
