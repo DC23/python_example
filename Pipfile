@@ -13,7 +13,7 @@ pybind11 = "*"
 [dev-packages]
 pylama = "*"
 pytest = "*"
-pylint = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.6"

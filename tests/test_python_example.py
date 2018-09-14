@@ -1,10 +1,30 @@
+import numpy as np
 import python_example as m
+import pytest
+
 
 def test_version():
-    assert m.__version__ == '0.0.1'
+    assert m.__version__ == "0.0.1"
+
 
 def test_add_1_2():
     assert m.add(1, 2) == 3
 
+
 def test_subtract_1_2():
     assert m.subtract(1, 2) == -1
+
+
+def test_ndarray_args():
+    data = np.array([range(10)])
+    assert m.ndarray_sum(data) == sum(range(10))
+
+
+def test_runtime_error():
+    with pytest.raises(RuntimeError):
+        m.runtime_error()
+
+
+def test_range_error():
+    with pytest.raises(ValueError):
+        m.range_error()

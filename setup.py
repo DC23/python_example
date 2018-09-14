@@ -80,8 +80,6 @@ class BuildExt(build_ext):
             '-DWINDOWS',
             ],
         'unix': [
-            '-O3',
-            '-DNDEBUG',
             '-DUNIX',
             ],
     }
