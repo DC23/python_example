@@ -35,3 +35,14 @@ def test_return_ndarray():
     assert isinstance(a, np.ndarray)
     np.testing.assert_allclose(a, 5.0)
     assert len(a) == 10
+
+
+def test_get_class_with_vector_results():
+    n = 10
+    t = 4.3
+    h = 88.3
+    results = m.get_vector_results(n, t, h)
+    assert len(results.temperature) == n
+    np.testing.assert_allclose(results.temperature, t)
+    assert len(results.humidity) == n
+    np.testing.assert_allclose(results.humidity, h)

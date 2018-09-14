@@ -42,6 +42,24 @@ py::array_t<double> get_ndarray(int n, double value)
     return py::array(result.size(), result.data());
 }
 
+struct VectorResults
+{
+    const py::array_t<double> temperature;
+    const py::array_t<double> humidity;
+};
+
+VectorResults get_vector_results(int len, double temp_value, double hum_value)
+{
+    auto tmp = std::vector<double>(len, temp_value);
+    auto hum = std::vector<double>(len, hum_value);
+    VectorResults results = {
+        py::array(tmp.size(), tmp.data()), // temperature
+        py::array(hum.size(), hum.data()), // humidity
+    };
+
+    return results;
+}
+
 PYBIND11_MODULE(python_example, m)
 {
     m.doc() = R"pbdoc(
@@ -79,6 +97,12 @@ PYBIND11_MODULE(python_example, m)
     m.def("runtime_error", &runtime_error);
     m.def("range_error", &range_error);
     m.def("get_ndarray", &get_ndarray);
+
+    py::class_<VectorResults>(m, "VectorResults")
+        .def_readonly("temperature", &VectorResults::temperature)
+        .def_readonly("humidity", &VectorResults::humidity);
+
+    m.def("get_vector_results", &get_vector_results);
 
 #ifdef VERSION_INFO
     m.attr("__version__") = VERSION_INFO;
