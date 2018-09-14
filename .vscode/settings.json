@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "/home/daniel/.virtualenvs/python_example-XRpznMVn/bin/python",
+    "python.unitTest.pyTestArgs": [
+        "tests"
+    ],
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": true
+}

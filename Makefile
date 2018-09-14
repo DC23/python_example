@@ -3,6 +3,9 @@ SHELL=/bin/sh
 .SILENT:
 .IGNORE:
 
+.PHONY: all
+all: clean dev test
+
 .PHONY: dev
 dev: build
 	pipenv install -e .
