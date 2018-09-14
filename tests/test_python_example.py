@@ -28,3 +28,10 @@ def test_runtime_error():
 def test_range_error():
     with pytest.raises(ValueError):
         m.range_error()
+
+
+def test_return_ndarray():
+    a = m.get_ndarray(10, 5.0)
+    assert isinstance(a, np.ndarray)
+    np.testing.assert_allclose(a, 5.0)
+    assert len(a) == 10

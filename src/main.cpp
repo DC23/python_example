@@ -36,6 +36,12 @@ double ndarray_sum(py::array_t<double> ndarray)
     return sum;
 }
 
+py::array_t<double> get_ndarray(int n, double value)
+{
+    auto result = std::vector<double>(n, value);
+    return py::array(result.size(), result.data());
+}
+
 PYBIND11_MODULE(python_example, m)
 {
     m.doc() = R"pbdoc(
@@ -72,6 +78,7 @@ PYBIND11_MODULE(python_example, m)
 
     m.def("runtime_error", &runtime_error);
     m.def("range_error", &range_error);
+    m.def("get_ndarray", &get_ndarray);
 
 #ifdef VERSION_INFO
     m.attr("__version__") = VERSION_INFO;
