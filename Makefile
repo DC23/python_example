@@ -3,6 +3,10 @@ SHELL=/bin/sh
 .SILENT:
 .IGNORE:
 
+.PHONY: dev
+dev: build
+	pipenv install -e .
+
 .PHONY: help
 help:
 	echo
@@ -13,16 +17,14 @@ help:
 	echo
 	echo '  * clean: remove all build artefacts'
 	echo '  * build: builds the Python package'
-	echo '  * deps:  Installs Python build dependencies into a Pipenv environment'
+	echo '  * install:  builds and installs into pipenv environment'
+	echo '  * test:  runs unit tests'
+	echo '  * help:  display help message'
 
 .PHONY: build
 build:
 	pipenv run python setup.py bdist bdist_wheel
 	rm -rf tmp/
-
-.PHONY: dev
-dev:
-	pipenv install --dev
 
 .PHONY: clean
 clean:
@@ -30,3 +32,7 @@ clean:
 	rm -rf build/
 	rm -rf tmp/
 	echo ... done
+
+.PHONY: test
+test:
+	pytest ./tests
