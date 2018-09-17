@@ -27,6 +27,7 @@
         "ostream": "cpp",
         "system_error": "cpp",
         "type_traits": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "utility": "cpp"
     }
 }

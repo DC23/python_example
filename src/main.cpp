@@ -44,6 +44,11 @@ py::array_t<double> get_ndarray(int n, double value)
 
 struct VectorResults
 {
+    VectorResults(const std::vector<double>& temperature,
+                  const std::vector<double>& humidity)
+        : temperature(py::array(temperature.size(), temperature.data())),
+          humidity(py::array(humidity.size(), humidity.data())){};
+
     const py::array_t<double> temperature;
     const py::array_t<double> humidity;
 };
@@ -52,12 +57,7 @@ VectorResults get_vector_results(int len, double temp_value, double hum_value)
 {
     auto tmp = std::vector<double>(len, temp_value);
     auto hum = std::vector<double>(len, hum_value);
-    VectorResults results = {
-        py::array(tmp.size(), tmp.data()), // temperature
-        py::array(hum.size(), hum.data()), // humidity
-    };
-
-    return results;
+    return VectorResults(tmp, hum);
 }
 
 PYBIND11_MODULE(python_example, m)
